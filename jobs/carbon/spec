@@ -27,10 +27,10 @@ properties:
     default: inf
   carbon.cache.max_updates_per_second:
     description: Limits the number of whisper update_many() calls per second.
-    default: 500
+    default: 1000
   carbon.cache.max_creates_per_minute:
     description: Softly limits the number of whisper files that get created each minute.
-    default: 50
+    default: inf
 
   carbon.cache.line_receiver_interface:
     description: IP address the line receiver should listen on.
@@ -95,9 +95,9 @@ properties:
   carbon.storage_schemas:
     description: An array of storage schemas. Each storage schema must specify 'name', 'pattern' and 'retentions'.
     default:
-      - name: "my_storage_schema"
-        pattern: "^my\\.metrics\\.*"
-        retentions: "60s:1d"
+      - name: "default"
+        pattern: ".*"
+        retentions: "1m:1d,5m:2y"
   carbon.storage_aggregations:
     description: An array of storage aggregation methods. Each storage schema must specify 'name', 'pattern', 'xFilesFactor' and 'aggregationMethod'.
     default:
